@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panther24.ai — Mehr Kunden. Vollautomatisch.</title>
+<meta name="description" content="KI-gestütztes Marketing für lokale Unternehmen. Automatisch neue Kunden gewinnen ohne selbst Marketing zu machen.">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#04070f;color:#eef2fb;font-family:'Roboto',sans-serif;font-size:16px;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* BG */
+.bg{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(37,99,235,.03)1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,.03)1px,transparent 1px);background-size:52px 52px}
+.orb{position:fixed;border-radius:50%;pointer-events:none;filter:blur(110px);z-index:0}
+.o1{width:600px;height:600px;top:-150px;right:-100px;background:radial-gradient(circle,rgba(37,99,235,.15),transparent 70%)}
+.o2{width:450px;height:450px;bottom:-80px;left:-80px;background:radial-gradient(circle,rgba(6,182,212,.1),transparent 70%)}
+
+/* LAYOUT */
+.w{max-width:1040px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+.sec{position:relative;z-index:1;padding:80px 0;background:#04070f}
+
+/* TYPOGRAPHY */
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#06b6d4;margin-bottom:14px}
+.sh{font-size:clamp(28px,4vw,46px);font-weight:900;letter-spacing:-.025em;line-height:1.08;margin-bottom:16px;color:#eef2fb}
+.sp{font-size:17px;font-weight:300;color:rgba(238,242,251,.55);max-width:560px;line-height:1.8;margin-bottom:48px}
+
+/* CTA BUTTON */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  background:linear-gradient(135deg,#2563eb,#1d4ed8);
+  color:#fff;padding:18px 40px;border-radius:12px;
+  font-family:'Roboto',sans-serif;font-size:17px;font-weight:700;
+  text-decoration:none;transition:transform .2s,box-shadow .2s;
+  box-shadow:0 6px 32px rgba(37,99,235,.5);
+  border:none;cursor:pointer;
+  min-height:56px;
+  position:relative;overflow:hidden;
+}
+.btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.1),transparent);pointer-events:none}
+.btn:hover{transform:translateY(-3px);box-shadow:0 12px 44px rgba(37,99,235,.6);color:#fff;text-decoration:none}
+.btn:active{transform:translateY(0)}
+.arr{display:inline-block;transition:transform .2s}
+.btn:hover .arr{transform:translateX(6px)}
+
+.btn-sm{font-size:16px;padding:16px 32px;min-height:52px;width:100%;text-align:center}
+
+.btn-ghost{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  background:transparent;color:#eef2fb;
+  padding:17px 28px;border-radius:12px;
+  font-family:'Roboto',sans-serif;font-size:16px;font-weight:400;
+  text-decoration:none;transition:all .2s;
+  border:2px solid rgba(37,99,235,.4);
+  min-height:56px;
+}
+.btn-ghost:hover{background:rgba(37,99,235,.1);border-color:#3b82f6;color:#eef2fb;text-decoration:none}
+
+/* REVEAL ANIMATION */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.rv.on{opacity:1;transform:translateY(0)}
+
+/* ══ HERO ══ */
+.hero{
+  position:relative;z-index:1;
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  padding:100px 24px 80px;
+  text-align:center;
+  background:#04070f;
+}
+.hero-in{max-width:860px;margin:0 auto}
+
+.badge{
+  display:inline-flex;align-items:center;gap:9px;
+  background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.22);
+  color:#22c55e;padding:9px 22px;border-radius:100px;
+  font-size:12px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;
+  margin-bottom:32px;
+}
+.dot{width:7px;height:7px;background:#22c55e;border-radius:50%;animation:pulse 2s ease infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.7)}}
+
+.h1{
+  font-size:clamp(40px,8vw,82px);font-weight:900;
+  line-height:1.0;letter-spacing:-.03em;margin-bottom:24px;color:#eef2fb;
+}
+.h1 .g{
+  background:linear-gradient(110deg,#3b82f6 0%,#06b6d4 55%,#a78bfa 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;animation:shim 5s linear infinite;
+}
+@keyframes shim{to{background-position:200% center}}
+
+.hero-p{
+  font-size:clamp(16px,2.2vw,20px);font-weight:300;
+  color:rgba(238,242,251,.55);max-width:640px;margin:0 auto 40px;line-height:1.8;
+}
+.hero-p strong{color:#eef2fb;font-weight:500}
+
+.ctas{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:40px}
+
+.trust{display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;font-size:13px;color:#7a90b8;margin-bottom:0}
+.ti{display:flex;align-items:center;gap:6px}
+.ti::before{content:'✓';color:#22c55e;font-weight:700}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(37,99,235,.15);border:1px solid rgba(37,99,235,.15);border-radius:18px;overflow:hidden;margin-top:60px}
+.stat{background:#0b1222;padding:28px 20px;text-align:center}
+.stat-n{font-size:40px;font-weight:900;line-height:1;background:linear-gradient(120deg,#3b82f6,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+.stat-l{font-size:13px;color:#7a90b8;font-weight:300}
+
+/* BRANDS */
+.brands{padding:32px 24px 56px;border-top:1px solid rgba(37,99,235,.15);background:#04070f;position:relative;z-index:1}
+.brands-lbl{text-align:center;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#4e5f7a;margin-bottom:20px}
+.brands-row{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;max-width:800px;margin:0 auto}
+.pill{background:#0b1222;border:1px solid rgba(37,99,235,.15);border-radius:8px;padding:10px 18px;font-size:13px;font-weight:500;color:#7a90b8;white-space:nowrap;transition:all .2s}
+.pill:hover{border-color:rgba(37,99,235,.4);color:#eef2fb}
+
+/* PROBLEM */
+.prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.prob-card{background:#0b1222;border:1px solid rgba(37,99,235,.15);border-radius:14px;padding:22px 20px;display:flex;gap:14px;align-items:flex-start;transition:border-color .2s}
+.prob-card:hover{border-color:rgba(239,68,68,.3)}
+.prob-ico{width:42px;height:42px;border-radius:10px;flex-shrink:0;background:rgba(239,68,68,.1);display:flex;align-items:center;justify-content:center;font-size:20px}
+.pt{font-size:15px;font-weight:700;margin-bottom:5px;color:#eef2fb}
+.pd{font-size:13px;color:#7a90b8;line-height:1.65}
+
+/* HOW */
+.flow{position:relative;display:flex;flex-direction:column}
+.flow::before{content:'';position:absolute;left:27px;top:56px;bottom:56px;width:2px;background:linear-gradient(180deg,#2563eb,#06b6d4,#2563eb);opacity:.25}
+.fstep{display:flex;gap:28px;align-items:flex-start;padding:32px 0;border-bottom:1px solid rgba(37,99,235,.15);position:relative}
+.fstep:last-child{border-bottom:none}
+.fnum{width:56px;height:56px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,#2563eb,#06b6d4);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;color:#fff;box-shadow:0 4px 22px rgba(37,99,235,.4);position:relative;z-index:1}
+.fbody{flex:1;padding-top:8px}
+.ft{font-size:21px;font-weight:700;margin-bottom:8px;color:#eef2fb}
+.fd{font-size:15px;color:#7a90b8;line-height:1.8;max-width:560px}
+.ftag{display:inline-flex;align-items:center;gap:6px;margin-top:12px;background:rgba(37,99,235,.1);border:1px solid rgba(37,99,235,.2);color:#3b82f6;padding:4px 14px;border-radius:100px;font-size:12px;font-weight:500}
+
+/* RESULTS */
+.res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.res-card{background:#0b1222;border:1px solid rgba(37,99,235,.15);border-radius:16px;padding:26px 22px;transition:all .2s;position:relative;overflow:hidden}
+.res-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#2563eb,#06b6d4);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.res-card:hover{border-color:rgba(37,99,235,.4);transform:translateY(-4px)}
+.res-card:hover::after{transform:scaleX(1)}
+.ri{font-size:30px;margin-bottom:14px}
+.rt{font-size:16px;font-weight:700;margin-bottom:8px;color:#eef2fb}
+.rd{font-size:13px;color:#7a90b8;line-height:1.65}
+
+/* FOR WHOM */
+.niche-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.niche{display:flex;align-items:center;gap:16px;background:#0b1222;border:1px solid rgba(37,99,235,.15);border-radius:12px;padding:18px 20px;transition:all .2s}
+.niche:hover{border-color:rgba(37,99,235,.4);background:#0f1830;transform:translateX(4px)}
+.nem{font-size:26px;flex-shrink:0;width:38px;text-align:center}
+.nn{font-size:15px;font-weight:700;margin-bottom:3px;color:#eef2fb}
+.nd{font-size:13px;color:#7a90b8}
+
+/* TESTIS */
+.testis-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.testi{background:#0b1222;border:1px solid rgba(37,99,235,.15);border-radius:18px;padding:30px;transition:border-color .2s}
+.testi:hover{border-color:rgba(37,99,235,.3)}
+.tq-open{font-size:56px;line-height:.7;color:#3b82f6;opacity:.2;font-weight:900;margin-bottom:10px;display:block}
+.stars{color:#f59e0b;font-size:14px;letter-spacing:3px;margin-bottom:14px}
+.tq{font-size:14px;font-style:italic;color:rgba(238,242,251,.75);line-height:1.8;margin-bottom:22px}
+.t-author{display:flex;align-items:center;gap:12px}
+.tav{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#2563eb,#06b6d4);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;flex-shrink:0}
+.tname{font-size:14px;font-weight:500;color:#eef2fb}
+.tbiz{font-size:12px;color:#7a90b8;margin-top:2px}
+
+/* PACKAGES */
+.pkg-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:780px;margin:0 auto}
+.pkg{background:#0b1222;border:1px solid rgba(37,99,235,.15);border-radius:18px;padding:34px 28px;position:relative;transition:all .2s}
+.pkg:hover{transform:translateY(-4px)}
+.pkg.hot{border-color:#3b82f6;background:linear-gradient(160deg,rgba(37,99,235,.12),rgba(6,182,212,.06));box-shadow:0 0 50px rgba(37,99,235,.15)}
+.pkg-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#2563eb,#06b6d4);color:#fff;padding:5px 18px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.06em;white-space:nowrap}
+.pname{font-size:20px;font-weight:900;margin-bottom:8px;color:#eef2fb}
+.pdesc{font-size:13px;color:#7a90b8;margin-bottom:22px;line-height:1.65}
+.plist{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:30px}
+.plist li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:#7a90b8}
+.plist li::before{content:'✓';color:#22c55e;font-weight:700;flex-shrink:0;margin-top:2px}
+
+/* FAQ */
+.faq-wrap{max-width:700px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.fi{background:#0b1222;border:1px solid rgba(37,99,235,.15);border-radius:12px;overflow:hidden;transition:border-color .2s}
+.fi.open{border-color:rgba(37,99,235,.3)}
+.fq{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;cursor:pointer;gap:14px;font-size:15px;font-weight:500;color:#eef2fb;user-select:none}
+.fp{width:26px;height:26px;border-radius:50%;flex-shrink:0;background:rgba(37,99,235,.1);display:flex;align-items:center;justify-content:center;font-size:16px;color:#3b82f6;transition:transform .25s}
+.fi.open .fp{transform:rotate(45deg)}
+.fa{display:none;padding:0 22px 18px;font-size:14px;color:#7a90b8;line-height:1.8}
+.fi.open .fa{display:block}
+
+/* FINAL CTA */
+.final{padding:100px 24px;background:#04070f;position:relative;z-index:1}
+.final-box{background:linear-gradient(135deg,rgba(37,99,235,.16),rgba(6,182,212,.08));border:1px solid rgba(37,99,235,.28);border-radius:26px;padding:80px 40px;text-align:center;position:relative;overflow:hidden;max-width:800px;margin:0 auto}
+.final-box::before{content:'';position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:600px;height:300px;background:radial-gradient(ellipse,rgba(37,99,235,.22),transparent 70%);pointer-events:none}
+.final-box::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#3b82f6,#06b6d4,transparent)}
+.fh{font-size:clamp(32px,5vw,58px);font-weight:900;letter-spacing:-.025em;line-height:1.05;margin-bottom:18px;color:#eef2fb}
+.fh .g{background:linear-gradient(110deg,#3b82f6,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.fp2{font-size:18px;font-weight:300;color:rgba(238,242,251,.5);max-width:500px;margin:0 auto 36px;line-height:1.8}
+.fchecks{display:flex;align-items:center;justify-content:center;gap:22px;flex-wrap:wrap;margin-top:22px}
+.fck{font-size:13px;color:#7a90b8;display:flex;align-items:center;gap:6px}
+.fck::before{content:'✓';color:#22c55e;font-weight:700}
+
+/* FOOTER */
+.footer{border-top:1px solid rgba(37,99,235,.15);padding:44px 24px;text-align:center;background:#04070f;position:relative;z-index:1}
+.flogo{font-size:20px;font-weight:900;color:#eef2fb;margin-bottom:8px}
+.flogo span{color:#3b82f6}
+.footer p{font-size:13px;color:#4e5f7a;line-height:1.85}
+.footer a{color:#3b82f6;text-decoration:none}
+.footer a:hover{text-decoration:underline}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:768px){
+  .hero{padding:80px 16px 60px}
+  .h1{font-size:40px}
+  .stats{grid-template-columns:1fr}
+  .prob-grid,.niche-grid,.testis-grid{grid-template-columns:1fr}
+  .res-grid{grid-template-columns:1fr 1fr}
+  .pkg-grid{grid-template-columns:1fr;max-width:420px}
+  .final-box{padding:52px 20px}
+  .ctas{flex-direction:column;align-items:center}
+  .btn,.btn-ghost{width:100%;max-width:360px}
+  .flow::before{display:none}
+  .w{padding:0 16px}
+  .sec{padding:60px 0}
+  .fstep{gap:16px}
+  .ft{font-size:18px}
+  .fd{font-size:14px}
+  .sh{font-size:28px}
+}
+@media(max-width:480px){
+  .res-grid{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .stat:last-child{grid-column:1/-1}
+  .hero-p{font-size:16px}
+  .trust{gap:12px;font-size:12px}
+  .pkg{padding:24px 20px}
+  .final-box{padding:40px 16px}
+  .fh{font-size:30px}
+}
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="orb o1"></div>
+<div class="orb o2"></div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-in">
+    <div class="badge"><div class="dot"></div>KI-Marketing für lokale Unternehmen</div>
+    <h1 class="h1">Mehr Kunden.<br><span class="g">Vollautomatisch.</span></h1>
+    <p class="hero-p">Wir qualifizieren Anfragen automatisch, schreiben deinen Kunden und füllen deinen Kalender mit gebuchten Terminen — <strong>ohne dass du selbst Marketing machen musst.</strong></p>
+    <div class="ctas">
+      <a href="https://go.panther24.ai/book" target="_blank" class="btn">Jetzt kostenlose Demo sichern <span class="arr">→</span></a>
+      <a href="#wie" class="btn-ghost">Wie es funktioniert ↓</a>
+    </div>
+    <div class="trust">
+      <div class="ti">Setup in 7 Tagen</div>
+      <div class="ti">Erste Ergebnisse in 14 Tagen</div>
+      <div class="ti">Kein langer Vertrag</div>
+      <div class="ti">20 Min. Demo kostenlos</div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="stat-n">24/7</div><div class="stat-l">KI arbeitet für dich</div></div>
+      <div class="stat"><div class="stat-n">87%</div><div class="stat-l">Show-up Rate</div></div>
+      <div class="stat"><div class="stat-n">14 T.</div><div class="stat-l">bis erste Ergebnisse</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- BRANCHEN -->
+<div class="brands rv">
+  <div class="brands-lbl">Funktioniert für lokale Unternehmen in Hamburg & deutschlandweit</div>
+  <div class="brands-row">
+    <div class="pill">💆 Beauty & Laser</div>
+    <div class="pill">🏠 Immobilien</div>
+    <div class="pill">🎯 Coaches & Berater</div>
+    <div class="pill">💪 Fitness & PT</div>
+    <div class="pill">✨ Ästhetik & Wellness</div>
+    <div class="pill">🔧 Handwerk</div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<div class="sec">
+  <div class="w">
+    <div class="rv">
+      <div class="tag">Das Problem</div>
+      <h2 class="sh">Kommt dir das bekannt vor?</h2>
+      <p class="sp">Die meisten lokalen Unternehmen verlieren täglich Kunden — nicht weil ihr Angebot schlecht ist, sondern weil keine Zeit für Marketing bleibt.</p>
+    </div>
+    <div class="prob-grid rv">
+      <div class="prob-card"><div class="prob-ico">😓</div><div><div class="pt">Keine Zeit fürs Marketing</div><div class="pd">Du arbeitest den ganzen Tag im Business — für Marketing bleibt nichts übrig.</div></div></div>
+      <div class="prob-card"><div class="prob-ico">📉</div><div><div class="pt">Unregelmäßige Auftragslage</div><div class="pd">Mal voll ausgebucht, mal leerer Kalender — planbar ist das nicht.</div></div></div>
+      <div class="prob-card"><div class="prob-ico">📱</div><div><div class="pt">Leads die nicht antworten</div><div class="pd">Du kriegst Anfragen aber bis du antwortest ist der Interessent längst weg.</div></div></div>
+      <div class="prob-card"><div class="prob-ico">💸</div><div><div class="pt">Agenturen ohne Ergebnis</div><div class="pd">Du zahlst monatlich und siehst keine messbaren Resultate. Kein ROI.</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="sec" id="wie">
+  <div class="w">
+    <div class="rv">
+      <div class="tag">Die Lösung</div>
+      <h2 class="sh">So funktioniert Panther24.ai</h2>
+      <p class="sp">Ein vollautomatisches System das für dich neue Kunden gewinnt — während du dich auf dein eigentliches Business konzentrierst.</p>
+    </div>
+    <div class="flow rv">
+      <div class="fstep">
+        <div class="fnum">1</div>
+        <div class="fbody">
+          <div class="ft">Wir schalten deine Werbeanzeigen</div>
+          <div class="fd">Wir erstellen professionelle KI-Video-Ads und schalten sie auf Meta (Facebook & Instagram) — gezielt auf deine Wunschkunden in deiner Stadt, zur richtigen Zeit.</div>
+          <div class="ftag">📱 Meta Ads · 🎬 KI-Videos · 🎯 Zielgruppen-Targeting</div>
+        </div>
+      </div>
+      <div class="fstep">
+        <div class="fnum">2</div>
+        <div class="fbody">
+          <div class="ft">KI kontaktiert Leads sofort — automatisch</div>
+          <div class="fd">Sobald ein Interessent reagiert, schreibt unsere KI ihn sofort an — per WhatsApp, SMS und E-Mail. Automatisch, auch nachts und am Wochenende. Kein Lead geht mehr verloren.</div>
+          <div class="ftag">💬 WhatsApp · 📧 E-Mail · 📞 KI-Calling</div>
+        </div>
+      </div>
+      <div class="fstep">
+        <div class="fnum">3</div>
+        <div class="fbody">
+          <div class="ft">Termine landen direkt in deinem Kalender</div>
+          <div class="fd">Qualifizierte Interessenten buchen direkt in deinen Kalender. Automatische Erinnerungen sorgen dafür dass sie auch wirklich erscheinen.</div>
+          <div class="ftag">📅 Auto-Buchung · 🔔 Erinnerungen · 📊 CRM</div>
+        </div>
+      </div>
+      <div class="fstep">
+        <div class="fnum">4</div>
+        <div class="fbody">
+          <div class="ft">Du arbeitest — wir optimieren laufend</div>
+          <div class="fd">Alle Ergebnisse siehst du live in einem einfachen Dashboard. Wir analysieren und optimieren monatlich für dich. Kein technisches Wissen nötig.</div>
+          <div class="ftag">📈 Live-Dashboard · 📋 Reporting · 🔧 Optimierung</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ERGEBNISSE -->
+<div class="sec">
+  <div class="w">
+    <div class="rv" style="text-align:center;margin-bottom:48px">
+      <div class="tag">Was du bekommst</div>
+      <h2 class="sh">Was das für dein Business bedeutet</h2>
+    </div>
+    <div class="res-grid rv">
+      <div class="res-card"><div class="ri">⚡</div><div class="rt">Mehr Leads — automatisch</div><div class="rd">Das System läuft 24/7 und füllt deine Pipeline ohne dass du selbst etwas tun musst.</div></div>
+      <div class="res-card"><div class="ri">📅</div><div class="rt">Voller Kalender</div><div class="rd">Statt leeren Tagen hast du gebuchte Termine — planbar, konstant, Woche für Woche.</div></div>
+      <div class="res-card"><div class="ri">🤖</div><div class="rt">Kein Nachfassen mehr</div><div class="rd">Die KI übernimmt jeden Follow-up automatisch. Du antwortest nur noch auf echte Kunden.</div></div>
+      <div class="res-card"><div class="ri">⏰</div><div class="rt">10–15 Std. gespart / Woche</div><div class="rd">Kein Leads-Hinterherrennen, kein manuelles Marketing. Fokus auf dein Handwerk.</div></div>
+      <div class="res-card"><div class="ri">📊</div><div class="rt">Planbare Pipeline</div><div class="rd">Kein Auf und Ab mehr. Neue Termine kommen jede Woche — unabhängig von Saisonalität.</div></div>
+      <div class="res-card"><div class="ri">🛠</div><div class="rt">Null Tech-Stress</div><div class="rd">Wir richten alles ein. Kein technisches Wissen nötig — nur dein Kalender.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- FÜR WEN -->
+<div class="sec">
+  <div class="w">
+    <div class="rv" style="text-align:center;margin-bottom:40px">
+      <div class="tag">Für wen</div>
+      <h2 class="sh">Das funktioniert für dich wenn du…</h2>
+      <p class="sp" style="margin:0 auto">Ein lokales Unternehmen führst und konstant neue Kunden brauchst — ohne mehr Zeit ins Marketing zu stecken.</p>
+    </div>
+    <div class="niche-grid rv">
+      <div class="niche"><span class="nem">💆</span><div><div class="nn">Beauty & Laser Studios</div><div class="nd">Terminkalender dauerhaft und konstant füllen</div></div></div>
+      <div class="niche"><span class="nem">🏠</span><div><div class="nn">Immobilienmakler</div><div class="nd">Automatisch Verkäufer- und Käufer-Leads generieren</div></div></div>
+      <div class="niche"><span class="nem">🎯</span><div><div class="nn">Coaches & Berater</div><div class="nd">Qualifizierte Discovery-Calls automatisch buchen lassen</div></div></div>
+      <div class="niche"><span class="nem">💪</span><div><div class="nn">Fitness & Personal Trainer</div><div class="nd">Neue Mitglieder und Kunden auf Autopilot gewinnen</div></div></div>
+      <div class="niche"><span class="nem">✨</span><div><div class="nn">Ästhetik & Wellness Studios</div><div class="nd">Mehr Erstbehandlungen und Stammkunden aufbauen</div></div></div>
+      <div class="niche"><span class="nem">🔧</span><div><div class="nn">Handwerk & Dienstleister</div><div class="nd">Auftragsbuch füllen ohne teure Portale</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="sec">
+  <div class="w">
+    <div class="rv" style="text-align:center;margin-bottom:48px">
+      <div class="tag">Erfahrungen</div>
+      <h2 class="sh">Was unsere Kunden sagen</h2>
+    </div>
+    <div class="testis-grid rv">
+      <div class="testi"><span class="tq-open">"</span><div class="stars">★★★★★</div><div class="tq">Ich hatte vorher keine Zeit fürs Marketing. Seit Panther24.ai klingelt mein Kalender von alleine — ich behandle einfach. In den ersten 3 Wochen hatte ich mehr Anfragen als im ganzen Vormonat.</div><div class="t-author"><div class="tav">SM</div><div><div class="tname">Sarah M.</div><div class="tbiz">Laser & Beauty Studio, Hamburg</div></div></div></div>
+      <div class="testi"><span class="tq-open">"</span><div class="stars">★★★★★</div><div class="tq">Das System hat meinen Vertrieb komplett verändert. Statt kalter Akquise kommen jetzt vorqualifizierte Leads direkt in meinen Kalender. Ich spare locker 12 Stunden pro Woche.</div><div class="t-author"><div class="tav">JK</div><div><div class="tname">Julia K.</div><div class="tbiz">Business Coach, Hamburg</div></div></div></div>
+      <div class="testi"><span class="tq-open">"</span><div class="stars">★★★★★</div><div class="tq">Als Immobilienmakler war es immer schwierig konstant neue Verkäufer zu finden. Panther24.ai hat das für mich gelöst — vollautomatisch und messbar. Absolute Empfehlung.</div><div class="t-author"><div class="tav">TM</div><div><div class="tname">Thomas M.</div><div class="tbiz">Immobilienmakler, Hamburg</div></div></div></div>
+      <div class="testi"><span class="tq-open">"</span><div class="stars">★★★★★</div><div class="tq">Endlich eine Agentur die wirklich Ergebnisse liefert. Das Setup war in einer Woche fertig und danach lief alles von selbst. Mehr Kunden, weniger Stress.</div><div class="t-author"><div class="tav">AK</div><div><div class="tname">Anna K.</div><div class="tbiz">Wellness Studio, Hamburg</div></div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PAKETE -->
+<div class="sec">
+  <div class="w">
+    <div class="rv" style="text-align:center;margin-bottom:48px">
+      <div class="tag">Pakete</div>
+      <h2 class="sh">Zwei Pakete — ein Ziel</h2>
+      <p class="sp" style="margin:0 auto">Mehr Kunden, automatisch. Erfahre in deiner kostenlosen Demo welches Paket für dich passt.</p>
+    </div>
+    <div class="pkg-grid rv">
+      <div class="pkg">
+        <div class="pname">Starter</div>
+        <div class="pdesc">Perfekt für den Einstieg — alles was du brauchst um automatisch neue Kunden zu gewinnen.</div>
+        <ul class="plist">
+          <li>Meta Ads (Facebook & Instagram)</li>
+          <li>Bis zu 3 KI-Video-Ads pro Monat</li>
+          <li>Automatisches WhatsApp & SMS Follow-up</li>
+          <li>Automatische Terminbuchung</li>
+          <li>CRM-System & Lead-Tracking</li>
+          <li>Monatliches Performance-Reporting</li>
+          <li>E-Mail-Support (48h Reaktionszeit)</li>
+        </ul>
+        <a href="https://go.panther24.ai/book" target="_blank" class="btn btn-sm">Kostenlose Demo sichern →</a>
+      </div>
+      <div class="pkg hot">
+        <div class="pkg-badge">Beliebteste Wahl</div>
+        <div class="pname">Growth</div>
+        <div class="pdesc">Für Unternehmen die skalieren möchten — mit KI-Calling und persönlicher Betreuung.</div>
+        <ul class="plist">
+          <li>Alles aus Starter</li>
+          <li>KI-Calling Agent (24/7 Telefonqualifizierung)</li>
+          <li>E-Mail Nurture-Sequenzen</li>
+          <li>Bis zu 4 Ads pro Monat</li>
+          <li>2 Strategy-Calls / Monat (je 30 Min.)</li>
+          <li>Erweitertes CRM & Lead-Scoring</li>
+          <li>Priority WhatsApp-Support (24h)</li>
+        </ul>
+        <a href="https://go.panther24.ai/book" target="_blank" class="btn btn-sm">Kostenlose Demo sichern →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="sec">
+  <div class="w">
+    <div class="rv" style="text-align:center;margin-bottom:48px">
+      <div class="tag">FAQ</div>
+      <h2 class="sh">Häufige Fragen</h2>
+    </div>
+    <div class="faq-wrap rv">
+      <div class="fi"><div class="fq" onclick="doF(this)">Wie schnell sehe ich erste Ergebnisse?<div class="fp">+</div></div><div class="fa">Das Setup dauert 5–7 Werktage. Danach starten die ersten Anzeigen. Die meisten Kunden sehen erste Anfragen innerhalb von 7–14 Tagen nach Kampagnenstart.</div></div>
+      <div class="fi"><div class="fq" onclick="doF(this)">Muss ich selbst etwas technisch einrichten?<div class="fp">+</div></div><div class="fa">Nein. Wir richten alles komplett für dich ein — CRM, Automatisierungen, Ads, Kalenderanbindung. Du brauchst nur einen aktiven Meta-Account und deinen Kalender.</div></div>
+      <div class="fi"><div class="fq" onclick="doF(this)">Was kostet das Werbebudget zusätzlich?<div class="fp">+</div></div><div class="fa">Das Werbebudget zahlst du direkt an Meta — nicht an uns. Wir empfehlen 500–1.000 € pro Monat für messbare Ergebnisse. Das Budget liegt komplett in deiner Kontrolle.</div></div>
+      <div class="fi"><div class="fq" onclick="doF(this)">Wie lange läuft der Vertrag?<div class="fp">+</div></div><div class="fa">Die Mindestlaufzeit beträgt 6 Monate. Danach kannst du monatlich mit 30 Tagen Frist kündigen.</div></div>
+      <div class="fi"><div class="fq" onclick="doF(this)">Was ist eine kostenlose Demo?<div class="fp">+</div></div><div class="fa">Ein 20-minütiges Gespräch per Video-Call. Ich zeige dir live wie das System für genau dein Business aussehen würde. Kein Verkaufsdruck — nur echte Beratung.</div></div>
+      <div class="fi"><div class="fq" onclick="doF(this)">Was wenn ich keine Ergebnisse sehe?<div class="fp">+</div></div><div class="fa">Wir arbeiten so lange mit dir zusammen bis wir Ergebnisse erzielen. Monatliche Optimierungen und Strategy-Calls sind fester Bestandteil.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- FINAL CTA -->
+<div class="final">
+  <div class="final-box rv">
+    <div class="tag">Jetzt starten</div>
+    <h2 class="fh">Bereit für<br><span class="g">automatisch mehr Kunden?</span></h2>
+    <p class="fp2">20 Minuten. Kostenlos. Kein Druck.<br>Du siehst live wie es für dein Business konkret aussieht.</p>
+    <a href="https://go.panther24.ai/book" target="_blank" class="btn" style="font-size:18px;padding:20px 52px">
+      Jetzt kostenlose Demo sichern <span class="arr">→</span>
+    </a>
+    <div class="fchecks">
+      <span class="fck">Kostenlos & unverbindlich</span>
+      <span class="fck">Setup in 7 Tagen</span>
+      <span class="fck">Erste Ergebnisse in 14 Tagen</span>
+      <span class="fck">Kein Risiko</span>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="flogo">Panther<span>24</span>.ai</div>
+  <p>Hamburg, Deutschland &nbsp;·&nbsp; <a href="https://panther24.ai" target="_blank">panther24.ai</a> &nbsp;·&nbsp; <a href="mailto:kontakt@panther24.ai">kontakt@panther24.ai</a></p>
+  <p style="margin-top:8px">© 2025 Panther24.ai · Alle Rechte vorbehalten</p>
+</div>
+
+<script>
+// Scroll Reveal
+var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('on');obs.unobserve(x.target)}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(e){obs.observe(e)});
+
+// FAQ
+function doF(el){
+  var i=el.parentElement,o=i.classList.contains('open');
+  document.querySelectorAll('.fi').forEach(function(x){x.classList.remove('open')});
+  if(!o)i.classList.add('open');
+}
+</script>
+</body>
+</html>
